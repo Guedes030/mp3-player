@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>audio player</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #content{
+        width: 300px;
+        height: 600px;
+        border: 2px solid black;
+        border-radius: 40px;
+        background-color: rgb(248,249,250);
+        display: flex;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%);
+        box-shadow: 1px 1px 1rem 1px black;
+    }
+    #img1{
+        
+        height: fit-content;
+        position: relative;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%);
+        filter: drop-shadow(1px 1px 1rem black);
+        transform-origin: center;
+    }
+    #content2{
+        display: flex;
+        align-items: end;
+        position: absolute;
+        bottom: 30%;
+        left: 50%;
+        transform: translate(-50%);
+        border-top: 2px solid black;
+        width: 100%;
+        justify-content: center;
+    }
+    #things{
+        padding-top: 20px;
+        
+    }
+    #svg1{
+        transform: rotatey(180deg);
+
+    }
+    #svg2{
+        margin-inline: 2rem;
+    }
+    #svg3{
+
+    }
+    #button{
+        margin-inline: 10px;
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.6s;
+
+    }
+    #button:hover{
+        box-shadow: 1px 1px 1rem 1px black;
+    }
+    #button1{
+        margin-inline: 10px;
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.6s;
+
+    }
+    #button1:hover{
+        box-shadow: 1px 1px 1rem 1px black;
+    }
+    
+    @keyframes rotate{
+        from{
+            transform: translate(-50%) rotate(0);
+        }to{
+            transform: translate(-50%) rotate(360deg);
+        }
+    }
+    input{
+        display: none;
+    }
+    #radio1:checked~#img1{
+        animation: rotate 1s infinite;
+    }
+</style>
+<body>
+    <br><br>
+    <div id="content">
+        <input type="radio"name="nome" id="radio1">
+        <input type="radio"name="nome" id="radio2" checked>
+        <div id="img1">
+            <img src="download-removebg-preview.png" alt="cd oasis">
+        </div>
+        <div id="content2">
+            <div id="things">
+                <button id="button"><svg xmlns="http://www.w3.org/2000/svg"id="svg1" width="32" height="32" fill="black" class="bi bi-fast-forward-fill" viewBox="0 0 16 16">
+                    <path d="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+                    <path d="M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+                  </svg></button>
+                  <button id="button1"><label for="radio1" id="label"><svg xmlns="http://www.w3.org/2000/svg" id="svg2" width="32" height="32" fill="black" class="bi bi-pause-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                    <path d="M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0z"/>
+                  </svg></label></button>
+
+                  <button id="button"><svg xmlns="http://www.w3.org/2000/svg" id="svg3" width="32" height="32" fill="black" class="bi bi-fast-forward-fill" viewBox="0 0 16 16">
+                    <path d="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+                    <path d="M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+                  </svg></button>
+                  <label for="radio2">
+
+                  </label>
+
+            </div>
+        </div>
+
+
+    </div>
+    <audio src="Oasis - Don't Look Back in Anger.mp3" id="audio"></audio>
+
+</body>
+</html>
+<script>
+    const radio1 = document.getElementById('label')
+    const audio = document.getElementById('audio')
+    const radioPri=document.getElementById('radio1')
+    const radiosec= document.getElementById('radio2')
+    let car = ""
+    let n= ""
+    radio1.addEventListener('click',function(){
+        car++
+        if(car%2==0){
+        radio1.htmlFor='radio2'
+
+            radiosec.checked=true
+            audio.pause()
+        
+        }else{
+            radio1.htmlFor='radio1'
+
+            radioPri.checked=true
+            audio.play()
+        }
+    })
+</script>
