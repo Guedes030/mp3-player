@@ -55,9 +55,9 @@
     #svg2{
         margin-inline: 2rem;
     }
-    #svg3{
+    
 
-    }
+    
     #button{
         margin-inline: 10px;
         border: 1px solid black;
@@ -96,63 +96,173 @@
     #radio1:checked~#img1{
         animation: rotate 1s infinite;
     }
+    #things2{
+        display: flex;
+        align-items: end;
+        position: absolute;
+        bottom: 10%;
+        left: 10%;
+        width: 100%;
+        justify-content: center;
+        width: fit-content;
+        flex-direction: column;
+    }
+    #lulp{
+        background-image: linear-gradient(45deg,purple,red);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: xx-large;
+        background-size: 400% 100%;
+        text-transform: uppercase;
+        animation: cor 10s linear infinite alternate;
+        
+    }
+    @keyframes cor {
+        0%{
+background-position-x: 0%;
+        }100%{
+background-position: 400%;
+        }
+    }
 </style>
+
 <body>
+    <br><br>
+    <div style="display: flex; justify-content: center;text-decoration: overline;">
+    <h1 id="lulp">MP3 PLAYER</h1>
+</div>
     <br><br>
     <div id="content">
         <input type="radio"name="nome" id="radio1">
         <input type="radio"name="nome" id="radio2" checked>
+        <input type="radio"name="nome" id="radio3">
+        <input type="radio"name="nome" id="radio4">
+
+        
         <div id="img1">
             <img src="download-removebg-preview.png" alt="cd oasis">
         </div>
         <div id="content2">
             <div id="things">
-                <button id="button"><svg xmlns="http://www.w3.org/2000/svg"id="svg1" width="32" height="32" fill="black" class="bi bi-fast-forward-fill" viewBox="0 0 16 16">
+                <button id="button"><label for="radio3" id="label3"><svg xmlns="http://www.w3.org/2000/svg"id="svg1" width="32" height="32" fill="black" class="bi bi-fast-forward-fill" viewBox="0 0 16 16">
                     <path d="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
                     <path d="M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
-                  </svg></button>
+                  </svg></label></button>
                   <button id="button1"><label for="radio1" id="label"><svg xmlns="http://www.w3.org/2000/svg" id="svg2" width="32" height="32" fill="black" class="bi bi-pause-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                     <path d="M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0z"/>
                   </svg></label></button>
 
-                  <button id="button"><svg xmlns="http://www.w3.org/2000/svg" id="svg3" width="32" height="32" fill="black" class="bi bi-fast-forward-fill" viewBox="0 0 16 16">
+                  <button id="button"><label for="radio4" id="label4"><svg xmlns="http://www.w3.org/2000/svg" id="svg3" width="32" height="32" fill="black" class="bi bi-fast-forward-fill" viewBox="0 0 16 16">
                     <path d="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
                     <path d="M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
-                  </svg></button>
-                  <label for="radio2">
-
-                  </label>
-
+                    
+                  </svg></label></button>
+                  
             </div>
+            <br><br>
+           
+
         </div>
 
-
+        <div id="things2">
+            <p id="tempoAudio" style="position: relative;margin: auto;"></p>
+<br>
+            <h1 id="lulp" class="lulp1">Don't look back in Anger</h1>
+            </div>
     </div>
-    <audio src="Oasis - Don't Look Back in Anger.mp3" id="audio"></audio>
 
+    <audio src="Oasis - Don't Look Back in Anger.mp3" id="audio"></audio>
+<audio src="wonderwall.mp3" id="audio2"></audio>
+<audio src=""></audio>
 </body>
 </html>
 <script>
     const radio1 = document.getElementById('label')
-    const audio = document.getElementById('audio')
-    const radioPri=document.getElementById('radio1')
-    const radiosec= document.getElementById('radio2')
+    const radio3=document.getElementById('label3')
+    const radio4=document.getElementById('label4')
+
+    const audio1 = document.getElementById('audio')
+    const audio2= document.getElementById('audio2')
+
+    var tempoAudio = document.getElementById("tempoAudio");
+    const texto = document.querySelector('h1[class="lulp1"]')
+   let n=""
     let car = ""
-    let n= ""
     radio1.addEventListener('click',function(){
+
+        audio1.addEventListener("timeupdate", function() {
+    var tempoAtual = audio1.currentTime;
+    tempoAudio.textContent = "Tempo atual: " + tempoAtual.toFixed(2);
+  });
         car++
-        if(car%2==0){
+        if(n==0 && car%2==0){
         radio1.htmlFor='radio2'
 
-            radiosec.checked=true
-            audio.pause()
+            audio1.pause()
         
-        }else{
+        }else if(n==0){
             radio1.htmlFor='radio1'
 
-            radioPri.checked=true
-            audio.play()
+            audio1.play()
         }
     })
+ radio4.addEventListener('click',function(){
+    radio1.htmlFor="radio2"
+    car++
+    audio1.pause()
+    audio2.pause()
+
+    audio1.currentTime=0
+    audio2.currentTime=0
+    n++
+    texto.textContent="Wonderwall"
+    
+
+  if(n>=2){
+    alert("Não há mais músicas, voltando para a música anterior")
+    n--
+  }
+
+
+})
+
+radio1.addEventListener('click',function(){
+
+    audio2.addEventListener("timeupdate", function() {
+    var tempoAtual = audio2.currentTime;
+    tempoAudio.textContent = "Tempo atual: " + tempoAtual.toFixed(2);
+  });
+        if(car%2==0 && n==1){
+        radio1.htmlFor='radio2'
+
+            audio2.pause()
+        
+        }else if(n==1){
+            radio1.htmlFor='radio1'
+
+            audio2.play()
+        }
+    })
+
+radio3.addEventListener('click',function(){
+    radio1.htmlFor="radio2"
+    car++
+    audio1.pause()
+    audio2.pause()
+    audio1.currentTime=0
+    audio2.currentTime=0
+
+n--
+texto.textContent="DON'T LOOK BACK IN ANGER"
+    if (n<0){
+        
+        alert("não há músicas para trás, voltando para música anterior")
+        n++
+    }
+
+})
+
+ 
 </script>
