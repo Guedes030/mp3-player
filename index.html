@@ -103,7 +103,9 @@
     #radio1:checked~#img1{
         animation: rotate 1s infinite;
     }
+    
     #things2{
+        width: fit-content;
         display: flex;
         align-items: end;
         position: absolute;
@@ -199,8 +201,12 @@ background-position: 400%;
 
     var tempoAudio = document.getElementById("tempoAudio");
     const texto = document.querySelector('h1[class="lulp1"]')
+
    let n=""
     let car = ""
+
+//funcionamento principal do sistema.Deve estar acima para ser lido primeiro.
+
     radio1.addEventListener('click',function(){
 
         audio1.addEventListener("timeupdate", function() {
@@ -219,6 +225,9 @@ background-position: 400%;
             audio1.play()
         }
     })
+
+    //funcionamento do botão da direita
+
  radio4.addEventListener('click',function(){
     radio1.htmlFor="radio2"
     car++
@@ -246,6 +255,9 @@ background-position: 400%;
 
 })
 
+
+//funcionamento da segunda música
+
 radio1.addEventListener('click',function(){
 
     audio2.addEventListener("timeupdate", function() {
@@ -264,6 +276,8 @@ radio1.addEventListener('click',function(){
         }
     })
 
+    //Funcionamento da terceira música
+
     radio1.addEventListener('click',function(){
 
 audio3.addEventListener("timeupdate", function() {
@@ -281,6 +295,9 @@ tempoAudio.textContent = "Tempo atual: " + tempoAtual.toFixed(2);
         audio3.play()
     }
 })
+
+
+//funcionamento do botão da esquerda
 
 radio3.addEventListener('click',function(){
     radio1.htmlFor="radio2"
