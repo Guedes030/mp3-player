@@ -105,15 +105,13 @@
     }
     
     #things2{
-        width: 300px ;
+        width: 300px;
         display: flex;
-        align-items: end;
-        position: absolute;
+        position: relative;
         bottom: 6%;
-        left: 10%;
-        width: 100%;
+        transform: translate(-45%);
+    
         justify-content: center;
-        width: fit-content;
         flex-direction: column;
     }
     #lulp{
@@ -121,7 +119,6 @@
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-size: xx-large;
         background-size: 400% 100%;
         text-transform: uppercase;
         animation: cor 10s linear infinite alternate;
@@ -183,13 +180,15 @@ background-position: 400%;
             
             <p id="tempoAudio" style="position: relative;margin: auto;"></p>
             <br>
-            <h1 id="lulp" class="lulp1" style="font-size: 1.5rem;">Don't look back in Anger</h1>
+            <h1 id="lulp" class="lulp1" style="font-size: 1.5rem;">COME HOME</h1>
             </div>
     </div>
     <div id="nav">
-    <label for="Oasis Songs" id="oasis"><button id="button" ><a href="index.html" style="text-decoration: none;color: black;">OASIS SONGS</a></button></label>
+        <label for="Oasis Songs" id="oasis"><button id="button" ><a href="index.html" style="text-decoration: none;color: black;">OASIS SONGS</a></button></label>
     
-    <label for="James Songs" id="james"> <button id="button" ><a href="james.html" style="text-decoration: none;color: black;">JAMES SONGS</a></button></label>
+        <label for="James Songs" id="james"> <button id="button" ><a href="james.html" style="text-decoration: none;color: black;">JAMES SONGS</a></button></label>
+        </div>
+    
     </div>
 
 <br><br>
@@ -230,20 +229,20 @@ let man =""
 
     radio1.addEventListener('click',function(){
 
-        audio1.addEventListener("timeupdate", function() {
-    var tempoAtual = audio1.currentTime;
+        audio4.addEventListener("timeupdate", function() {
+    var tempoAtual = audio4.currentTime;
     tempoAudio.textContent = "Tempo atual: " + tempoAtual.toFixed(2);
   });
         car++
         if(n==0 && car%2==0){
         radio1.htmlFor='radio2'
 
-            audio1.pause()
+            audio4.pause()
         
         }else if(n==0){
             radio1.htmlFor='radio1'
 
-            audio1.play()
+            audio4.play()
         }
     })
 
@@ -261,14 +260,8 @@ let man =""
     audio3.currentTime=0
 
     n++
-    if(n==1){
-    texto.textContent="Wonderwall"
-    }else if(n==2){
-        texto.textContent="Stop crying your Hearth out"
-
-    }
-
-  if(n>2){
+    
+  if(n>0){
     alert("Não há mais músicas, voltando para a música anterior")
     n--
   }
@@ -333,14 +326,7 @@ radio3.addEventListener('click',function(){
 
 
 n--
-if(n==1){
-    texto.textContent="Wonderwall"
-    }else if(n==2 && man%2==0){
-        texto.textContent="Stop crying your Hearth out"
 
-    }else if(n==0){
-texto.textContent="DON'T LOOK BACK IN ANGER"
-    }
     if (n<0){
         
         alert("não há músicas para trás, voltando para música anterior")
