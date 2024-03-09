@@ -29,6 +29,17 @@
         transform: translate(-50%);
         box-shadow: 1px 1px 1rem 1px black;
     }
+    @keyframes shadow{
+        from{
+            box-shadow: 1px 1px 1rem 1px black;
+
+        }to{
+            box-shadow: 1px 1px 4rem 1rem black;
+
+        }
+        
+    }
+
     #img1{
         
         height: fit-content;
@@ -211,7 +222,7 @@ background-position: 400%;
     
     const oasis = document.getElementById('oasis')
     const james = document.getElementById('james')
-
+const content = document.getElementById('content')
     const audio1 = document.getElementById('audio')
     const audio2= document.getElementById('audio2')
     const audio3= document.getElementById('audio3')
@@ -242,11 +253,13 @@ let man =""
         radio1.htmlFor='radio2'
 
             audio1.pause()
-        
+        content.style=''
         }else if(n==0){
             radio1.htmlFor='radio1'
 
             audio1.play()
+            content.style='animation: shadow 1s alternate infinite;'
+
         }
     })
 
@@ -258,6 +271,7 @@ let man =""
     audio1.pause()
     audio2.pause()
     audio3.pause()
+    content.style=''
 
     audio1.currentTime=0
     audio2.currentTime=0
@@ -292,11 +306,14 @@ radio1.addEventListener('click',function(){
         radio1.htmlFor='radio2'
 
             audio2.pause()
+            content.style=''
         
         }else if(n==1){
             radio1.htmlFor='radio1'
 
             audio2.play()
+            content.style='animation: shadow 1s alternate infinite;'
+
         }
     })
 
@@ -312,11 +329,14 @@ tempoAudio.textContent = "Tempo atual: " + tempoAtual.toFixed(2);
     radio1.htmlFor='radio2'
 
         audio3.pause()
-    
+        content.style=''
+
     }else if(n==2){
         radio1.htmlFor='radio1'
 
         audio3.play()
+        content.style='animation: shadow 1s alternate infinite;'
+
     }
 })
 
@@ -329,6 +349,7 @@ radio3.addEventListener('click',function(){
     audio1.pause()
     audio2.pause()
     audio3.pause()
+    content.style=''
 
     audio1.currentTime=0
     audio2.currentTime=0

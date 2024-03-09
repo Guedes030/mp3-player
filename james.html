@@ -16,6 +16,17 @@
         background-size: 400% 100%;
 
     }
+    @keyframes shadow{
+        from{
+            box-shadow: 1px 1px 1rem 1px black;
+
+        }to{
+            box-shadow: 1px 1px 4rem 1rem black;
+
+        }
+        
+    }
+
     #content{
         width: 300px;
         height: 600px;
@@ -212,7 +223,7 @@ background-position: 400%;
     
     const oasis = document.getElementById('oasis')
     const james = document.getElementById('james')
-
+const content = document.getElementById('content')
     const audio1 = document.getElementById('audio')
     const audio2= document.getElementById('audio2')
     const audio3= document.getElementById('audio3')
@@ -243,11 +254,15 @@ let man =""
         radio1.htmlFor='radio2'
 
             audio4.pause()
-        
+            content.style=''
+
         }else if(n==0){
             radio1.htmlFor='radio1'
 
             audio4.play()
+
+            content.style='animation: shadow 1s alternate infinite;'
+
         }
     })
 

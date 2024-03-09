@@ -29,6 +29,26 @@
         transform: translate(-50%);
         box-shadow: 1px 1px 1rem 1px black;
     }
+    @keyframes shadow{
+        from{
+            box-shadow: 1px 1px 1rem 1px black;
+
+        }to{
+            box-shadow: 1px 1px 4rem 1rem black;
+
+        }
+        
+    }
+
+    @keyframes shadow1{
+        from{
+            box-shadow: 1px 1px 1rem 1px black;
+
+        }to{
+            box-shadow: 1px 1px 4rem 1rem rgb(255, 3, 3);
+
+        }
+    }
     #img1{
         
         height: fit-content;
@@ -185,6 +205,7 @@ background-position: 400%;
             <h1 id="lulp" class="lulp1" style="font-size: 1.5rem;">NOBODYS HOME</h1>
             </div>
     </div>
+    <br><br>
     <div id="nav">
     <label for="Oasis Songs" id="oasis"><button id="button" ><a href="index.html" style="text-decoration: none;color: black;">OASIS SONGS</a></button></label>
     
@@ -216,6 +237,7 @@ background-position: 400%;
     const audio3= document.getElementById('audio3')
     const audio4 = document.getElementById('audio4')
 
+    const content = document.getElementById('content')
 
 
     var tempoAudio = document.getElementById("tempoAudio");
@@ -224,6 +246,34 @@ background-position: 400%;
    let n=""
     let car = ""
 let man =""
+
+function lol(){
+    radio1.htmlFor="radio2"
+    car++
+    audio1.pause()
+    audio2.pause()
+    audio3.pause()
+    content.style=''
+
+    audio1.currentTime=0
+    audio2.currentTime=0
+    audio3.currentTime=0
+
+    n++
+    if(n==1){
+    texto.textContent="COMPLICATED"
+    }else if(n==2){
+        texto.textContent="SKAT8R BOY"
+    }
+    if(n>2){
+    alert("Não há mais músicas, voltando para a música anterior")
+    n--
+  }
+
+        
+  
+}
+  
 //funcionamento principal do sistema.Deve estar acima para ser lido primeiro.
 
 
@@ -235,67 +285,58 @@ let man =""
         audio1.addEventListener("timeupdate", function() {
     var tempoAtual = audio1.currentTime;
     tempoAudio.textContent = "Tempo atual: " + tempoAtual.toFixed(2);
+    if(tempoAtual==audio2.duration){
+        audio2.currentTime==0
+lol()
+   }
   });
         car++
         if(n==0 && car%2==0){
         radio1.htmlFor='radio2'
 
             audio1.pause()
-        
+        content.style=''
         }else if(n==0){
             radio1.htmlFor='radio1'
 
             audio1.play()
+            content.style='animation: shadow 1s alternate infinite;'
+
         }
+
+        
     })
 
+    
     //funcionamento do botão da direita
 
- radio4.addEventListener('click',function(){
-    radio1.htmlFor="radio2"
-    car++
-    audio1.pause()
-    audio2.pause()
-    audio3.pause()
-
-    audio1.currentTime=0
-    audio2.currentTime=0
-    audio3.currentTime=0
-
-    n++
-    if(n==1){
-    texto.textContent="COMPLICATED"
-    }else if(n==2){
-        texto.textContent="SKAT8R BOY"
-
-    }
-
-  if(n>2){
-    alert("Não há mais músicas, voltando para a música anterior")
-    n--
-  }
-
-
-})
+ radio4.addEventListener('click', lol)
 
 
 //funcionamento da segunda música
+
 
 radio1.addEventListener('click',function(){
 
     audio2.addEventListener("timeupdate", function() {
     var tempoAtual = audio2.currentTime;
     tempoAudio.textContent = "Tempo atual: " + tempoAtual.toFixed(2);
+   if(tempoAtual==audio2.duration){
+lol()
+   }
   });
         if(car%2==0 && n==1){
         radio1.htmlFor='radio2'
 
             audio2.pause()
-        
+            content.style=''
+
         }else if(n==1){
             radio1.htmlFor='radio1'
 
             audio2.play()
+            content.style='animation: shadow 1s alternate infinite;'
+
         }
     })
 
@@ -306,16 +347,23 @@ radio1.addEventListener('click',function(){
 audio3.addEventListener("timeupdate", function() {
 var tempoAtual = audio3.currentTime;
 tempoAudio.textContent = "Tempo atual: " + tempoAtual.toFixed(2);
+if(tempoAtual==audio3.duration){
+lol()
+   }
 });
     if(car%2==0 && n==2){
     radio1.htmlFor='radio2'
 
         audio3.pause()
-    
+        content.style=''
+
     }else if(n==2){
         radio1.htmlFor='radio1'
 
         audio3.play()
+        
+        content.style='animation: shadow 1s alternate infinite;'
+
     }
 })
 
@@ -328,6 +376,7 @@ radio3.addEventListener('click',function(){
     audio1.pause()
     audio2.pause()
     audio3.pause()
+    content.style=''
 
     audio1.currentTime=0
     audio2.currentTime=0
@@ -335,12 +384,12 @@ radio3.addEventListener('click',function(){
 
 
 n--
-if(n==1){
+if(n==0){
     texto.textContent="NOBODYS HOME"
-    }else if(n==2 && man%2==0){
+    }else if(n==1 && man%2==0){
         texto.textContent="COMPLICATED"
 
-    }else if(n==0){
+    }else if(n==2){
 texto.textContent="SKAT8R BOY"
     }
     if (n<0){
